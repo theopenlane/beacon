@@ -36,6 +36,9 @@ steps:
         if: build.pull_request.id != null
         depends_on: ["go_test"]
         plugins:
+          - cluster-secrets#v1.0.0:
+              variables:
+                SONAR_TOKEN: SONAR_TOKEN
           - artifacts#v1.9.4:
               download: "coverage.out"
               step: "go_test"
@@ -48,10 +51,11 @@ steps:
       - label: ":github: upload reports"
         key: "scan-upload"
         if: build.branch == "main"
-        depends_on: ["gosec", "go_test"]
+        depends_on: ["go_test"]
         plugins:
-          - artifacts#v1.9.4:
-              download: results.txt
+          - cluster-secrets#v1.0.0:
+              variables:
+                SONAR_TOKEN: SONAR_TOKEN
           - artifacts#v1.9.4:
               download: coverage.out
               step: "go_test"
