@@ -1,3 +1,3 @@
 # beacon
 
-Libraries to help with Observability into the applications within the Openlane 
+Libraries to help with Observability into the applications within the Openlane
