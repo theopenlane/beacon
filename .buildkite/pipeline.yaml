@@ -10,7 +10,7 @@ steps:
         cancel_on_build_failing: true
         key: "lint"
         plugins:
-          - docker#v5.12.0:
+          - docker#v5.13.0:
               image: "golangci/golangci-lint:latest"
               command: ["golangci-lint", "run", "-v", "--timeout", "10m", "--config", ".golangci.yaml", "--concurrency", "0"]
               environment:
@@ -23,7 +23,7 @@ steps:
               limit: 2
         cancel_on_build_failing: true
         plugins:
-          - docker#v5.12.0:
+          - docker#v5.13.0:
               image: golang:1.23.3
               command: ["go", "test", "-coverprofile=coverage.out", "./..."]
         artifact_paths: ["coverage.out"]
@@ -42,7 +42,7 @@ steps:
           - artifacts#v1.9.4:
               download: "coverage.out"
               step: "go_test"
-          - docker#v5.12.0:
+          - docker#v5.13.0:
               image: "sonarsource/sonar-scanner-cli:11.0"
               environment:
                 - "SONAR_TOKEN"
@@ -59,7 +59,7 @@ steps:
           - artifacts#v1.9.4:
               download: coverage.out
               step: "go_test"
-          - docker#v5.12.0:
+          - docker#v5.13.0:
               image: "sonarsource/sonar-scanner-cli:11.0"
               environment:
                 - "SONAR_TOKEN"
