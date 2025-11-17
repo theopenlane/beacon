@@ -42,7 +42,7 @@ type StdOut struct {
 	// Pretty enables pretty printing of the output
 	Pretty bool `json:"pretty" koanf:"pretty" default:"true"`
 	// DisableTimestamp disables the timestamp in the output
-	DisableTimestamp bool `json:"disableTimestamp" koanf:"disableTimestamp" default:"false"`
+	DisableTimestamp bool `json:"disabletimestamp" koanf:"disabletimestamp" default:"false"`
 }
 
 // OTLP settings for the otlp provider
