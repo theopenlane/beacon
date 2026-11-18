@@ -15,7 +15,6 @@ tasks:
   go:test:
     desc: runs and outputs results of created go tests
     aliases: ['test']
-    env:
     cmds:
       - go test -v ./...
 

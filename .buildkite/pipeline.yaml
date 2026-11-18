@@ -1,6 +1,4 @@
 env:
-  APP_NAME: ${BUILDKITE_PIPELINE_SLUG}
-  IMAGE_REPO: ghcr.io/theopenlane/${APP_NAME}
   SONAR_HOST: "https://sonarcloud.io"
 steps:
   - group: ":test_tube: tests"
@@ -24,7 +22,7 @@ steps:
         cancel_on_build_failing: true
         plugins:
           - docker#v5.14.0:
-              image: golang:1.25.4
+              image: golang:1.27
               command: ["go", "test", "-coverprofile=coverage.out", "./..."]
         artifact_paths: ["coverage.out"]
   - group: ":closed_lock_with_key: Security Checks"
